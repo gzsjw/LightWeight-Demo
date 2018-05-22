@@ -5,14 +5,14 @@ import Vue from 'vue'
 // import store from './store'
 import router from './router'
 
+import Antd from 'vue-antd-ui'
+import 'vue-antd-ui/dist/antd.css'
+
 // import BootstrapVue from 'bootstrap-vue'
 // Import ElementUI
 // import ElementUI from 'element-ui'
 // Import Views - Top level
 import App from './App.vue'
-
-import iView from 'iview';
-import 'iview/dist/styles/iview.css';
 
 // Check local storage to handle refreshes
 if (window.localStorage) {
@@ -40,10 +40,12 @@ if (window.localStorage) {
 //   }
 // })
 
+Vue.use(Antd)
+
+Vue.config.productionTip = false
+
 // Vue.use(BootstrapVue)
 // Vue.use(ElementUI, { size: 'small' })
-
-Vue.use(iView);
 
 // Start out app!
 // eslint-disable-next-line no-new
