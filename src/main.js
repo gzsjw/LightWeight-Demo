@@ -11,6 +11,9 @@ import router from './router'
 // Import Views - Top level
 import App from './App.vue'
 
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+
 // Check local storage to handle refreshes
 if (window.localStorage) {
   // var localUserString = window.localStorage.getItem('user') || 'null'
@@ -39,6 +42,8 @@ if (window.localStorage) {
 
 // Vue.use(BootstrapVue)
 // Vue.use(ElementUI, { size: 'small' })
+
+Vue.use(iView);
 
 // Start out app!
 // eslint-disable-next-line no-new
