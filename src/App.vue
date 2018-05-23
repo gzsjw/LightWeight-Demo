@@ -9,26 +9,32 @@ export default {
 </script>
 
 <style lang="scss">
+  /* Import Font Awesome Icons Set */
+  $fa-font-path: '~font-awesome/fonts/';
+  @import '~font-awesome/scss/font-awesome.scss';
+  /* Import Simple Line Icons Set */
+  $simple-line-font-path: '~simple-line-icons/fonts/';
+  @import '~simple-line-icons/scss/simple-line-icons.scss';
+
   // Import Main styles for this application
-  // @import './scss/style';
+  @import './assets/scss/style';
 </style>
 
 <style>
-  /* Import Font Awesome Icons Set */
-  /*$fa-font-path: '~font-awesome/fonts/';
-  @import '~font-awesome/css/font-awesome.css';*/
-  /* Import Simple Line Icons Set */
-  /*$simple-line-font-path: '~simple-line-icons/fonts/';
-  @import '~simple-line-icons/css/simple-line-icons.css';*/
   /* Import Bootstrap Vue Styles */
-  /*@import '~bootstrap-vue/dist/bootstrap-vue.css';*/
+  @import '~bootstrap-vue/dist/bootstrap-vue.css';
 
-  /*@import '~element-ui/lib/theme-chalk/index.css';*/
+  @import '~vue-antd-ui/dist/antd.css';
+  @import '~element-ui/lib/theme-chalk/index.css';
 
-  /*.el-input .el-input__inner[type=number] {
+  /* Import Flag Icons Set */
+  @import '~flag-icon-css/css/flag-icon.min.css';
+
+  .el-input .el-input__inner[type=number] {
     text-align: right;
   }
+  
   .money_number .el-input__inner[type=text] {
     text-align: right;
-  }*/
+  }
 </style>

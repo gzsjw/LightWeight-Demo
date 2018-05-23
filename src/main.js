@@ -5,12 +5,11 @@ import Vue from 'vue'
 import store from './store'
 import router from './router'
 
-import Antd from 'vue-antd-ui'
-import 'vue-antd-ui/dist/antd.css'
+import BootstrapVue from 'bootstrap-vue'
 
-// import BootstrapVue from 'bootstrap-vue'
-// Import ElementUI
-// import ElementUI from 'element-ui'
+import Antd from 'vue-antd-ui'
+import ElementUI from 'element-ui'
+
 // Import Views - Top level
 import App from './App.vue'
 
@@ -24,35 +23,35 @@ if (window.localStorage) {
   // }
 }
 
-// router.beforeEach((to, from, next) => {
-//   // window.console.log('Transition', transition)
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     if (!store.state.isauthority) {
-//       next({
-//         path: '/login',
-//         query: { redirect: to.fullPath }
-//       })
-//     } else {
-//       next()
-//     }
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  // window.console.log('Transition', transition)
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!store.state.isauthority) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
 
+Vue.use(BootstrapVue)
 Vue.use(Antd)
+Vue.use(ElementUI, { size: 'small' })
 
 Vue.config.productionTip = false
 
-// Vue.use(BootstrapVue)
-// Vue.use(ElementUI, { size: 'small' })
 
 // Start out app!
 // eslint-disable-next-line no-new
 new Vue({
   el: '#app',
   router: router,
-  // store: store,
+  store: store,
   template: '<App/>',
   components: {
     App
