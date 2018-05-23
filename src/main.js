@@ -2,7 +2,7 @@
 import 'es6-promise/auto'
 
 import Vue from 'vue'
-// import store from './store'
+import store from './store'
 import router from './router'
 
 import Antd from 'vue-antd-ui'
