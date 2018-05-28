@@ -4,5 +4,8 @@ export default {
   },
   SET_ISAUTHORITY (state, isauthority) {
     state.isauthority = isauthority
+  },
+  SET_AUTHORIZEDFUNCNODES (state, authorizedFuncNodes) {
+    state.authorizedFuncNodes = authorizedFuncNodes
   }
 }

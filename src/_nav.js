@@ -3,6 +3,14 @@ import config from './config'
 export default {
   items: [
     {
+      title: true,
+      name: '示例',
+      wrapper: {
+        element: '',
+        attributes: {}
+      }
+    },
+    {
       name: '组件',
       url: '/components',
       icon: 'icon-puzzle',
@@ -61,12 +69,12 @@ export default {
       ]
     },
     {
-      divider: true
+      divider: true,
+      class: 'mt-auto'
     },
     {
       title: true,
-      name: '示例',
-      class: 'mt-auto',
+      name: '权限节点',
       wrapper: {
         element: '',
         attributes: {}

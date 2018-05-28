@@ -22,18 +22,18 @@ export default {
 
 <style>
   /* Import Bootstrap Vue Styles */
-  @import '~bootstrap-vue/dist/bootstrap-vue.css';
+  @import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-  @import '~vue-antd-ui/dist/antd.css';
-  @import '~element-ui/lib/theme-chalk/index.css';
+  @import 'vue-antd-ui/dist/antd.css';
+  @import 'element-ui/lib/theme-chalk/index.css';
 
   /* Import Flag Icons Set */
-  @import '~flag-icon-css/css/flag-icon.min.css';
+  @import 'flag-icon-css/css/flag-icon.min.css';
 
   .el-input .el-input__inner[type=number] {
     text-align: right;
   }
-  
+
   .money_number .el-input__inner[type=text] {
     text-align: right;
   }

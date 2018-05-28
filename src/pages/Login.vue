@@ -11,11 +11,11 @@
                   <p class="text-muted">输入账号密码</p>
                   <div class="input-group mb-3">
                     <span class="input-group-addon"><i class="icon-user"></i></span>
-                    <input class="form-control" id="userCode" placeholder="用户" type="text" v-model="userCode" autofocus></input>
+                    <input class="form-control" id="userCode" placeholder="用户" type="text" v-model="userCode" autofocus />
                   </div>
                   <div class="input-group mb-4">
                     <span class="input-group-addon"><i class="icon-lock"></i></span>
-                    <input class="form-control" id="userPWD" placeholder="密码" type="password" v-model="userPWD"></input>
+                    <input class="form-control" id="userPWD" placeholder="密码" type="password" v-model="userPWD" />
                   </div>
                   <div class="row">
                     <div class="col-4">
@@ -31,8 +31,8 @@
             <div class="card text-white bg-primary py-5 d-md-down-none">
               <div class="card-body d-flex flex-column justify-content-center">
                 <div>
-                  <h1 class="text-center p-2">资金计划</h1>
-                  <h1 class="text-center p-2">后台管理</h1>
+                  <h1 class="text-center p-2">翰智软件</h1>
+                  <h1 class="text-center p-2">演示系统</h1>
                 </div>
               </div>
             </div>
@@ -56,13 +56,13 @@ export default {
     }
   },
   methods: {
-    loginSucceed (user) {
-      /* Setting user in the state and caching record to the localStorage */
-      this.$store.commit('SET_USER', user)
+    loginSucceed (loginresponse) {
+      this.$store.commit('SET_USER', loginresponse.user)
+      this.$store.commit('SET_AUTHORIZEDFUNCNODES', loginresponse.funccodes)
       this.$store.commit('SET_ISAUTHORITY', true)
 
       if (window.localStorage) {
-        window.localStorage.setItem('userCode', user.code)
+        window.localStorage.setItem('userCode', loginresponse.user.userCode)
       }
 
       this.$router.push('/')

@@ -23,9 +23,20 @@ export default {
     return this.localmoment().format('LL')
   },
 
+  hasFuncNodeAuthority (store, funcnode) {
+    var authorizedFuncNodes = store.state.authorizedFuncNodes
+    if (!this.isNullOrUndefinedOrEmpty(authorizedFuncNodes)) {
+      if (authorizedFuncNodes.indexOf(funcnode) > -1) {
+        return true
+      }
+    }
+    return false
+  },
+
   logout (store, router) {
     store.commit('SET_ISAUTHORITY', false)
     store.commit('SET_USER', null)
+    store.commit('SET_AUTHORIZEDFUNCNODES', [])
 
     if (window.localStorage) {
       window.localStorage.setItem('userCode', null)

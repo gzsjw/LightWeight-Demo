@@ -2,7 +2,7 @@
   <div class="animated fadeIn">
     <b-row>
       <b-col sm="6" lg="3">
-        <b-card no-body class="bg-primary" :no-body="true">
+        <b-card no-body class="bg-primary">
           <b-card-body class="pb-0">
             <b-dropdown class="float-right" variant="transparent p-0" right>
               <template slot="button-content">
@@ -20,7 +20,7 @@
         </b-card>
       </b-col>
       <b-col sm="6" lg="3">
-        <b-card no-body class="bg-info" :no-body="true">
+        <b-card no-body class="bg-info">
           <b-card-body class="pb-0">
             <b-dropdown class="float-right" variant="transparent p-0" right no-caret>
               <template slot="button-content">
@@ -38,7 +38,7 @@
         </b-card>
       </b-col>
       <b-col sm="6" lg="3">
-        <b-card no-body class="bg-warning" :no-body="true">
+        <b-card no-body class="bg-warning">
           <b-card-body class="pb-0">
             <b-dropdown class="float-right" variant="transparent p-0" right>
               <template slot="button-content">
@@ -56,7 +56,7 @@
         </b-card>
       </b-col>
       <b-col sm="6" lg="3">
-        <b-card no-body class="bg-danger" :no-body="true">
+        <b-card no-body class="bg-danger">
           <b-card-body class="pb-0">
             <b-dropdown class="float-right" variant="transparent p-0" right>
               <template slot="button-content">
@@ -78,17 +78,17 @@
     <b-card>
       <b-row>
         <b-col sm="5">
-          <h4 class="card-title mb-0">Traffic</h4>
-          <div class="small text-muted">November 2016</div>
+          <h4 id="traffic" class="card-title mb-0">Traffic</h4>
+          <div class="small text-muted">November 2017</div>
         </b-col>
         <b-col sm="7" class="d-none d-md-block">
           <b-button type="button" variant="primary" class="float-right"><i class="icon-cloud-download"></i></b-button>
-          <b-button-toolbar class="float-right" aria-label="Toolbar with button groups">
-            <b-button-group class="mr-3" aria-label="First group">
-              <b-button variant="outline-secondary">Day</b-button>
-              <b-button variant="outline-secondary" :pressed="true">Month</b-button>
-              <b-button variant="outline-secondary">Year</b-button>
-            </b-button-group>
+          <b-button-toolbar class="float-right" aria-label="Toolbar with buttons group">
+            <b-form-radio-group class="mr-3" id="radiosBtn" buttons button-variant="outline-secondary" v-model="selected" name="radiosBtn">
+              <b-form-radio class="mx-0" value="Day">Day</b-form-radio>
+              <b-form-radio class="mx-0" value="Month">Month</b-form-radio>
+              <b-form-radio class="mx-0" value="Year">Year</b-form-radio>
+            </b-form-radio-group>
           </b-button-toolbar>
         </b-col>
       </b-row>
@@ -497,11 +497,7 @@
             </b-col>
           </b-row>
           <br/>
-          <b-table class="table-outline table-responsive-sm mb-0" hover
-            :items="tableItems"
-            :fields="tableFields"
-            head-variant="light"
-            >
+          <b-table class="mb-0 table-outline" responsive="sm" hover :items="tableItems" :fields="tableFields" head-variant="light">
             <div slot="avatar" class="avatar" slot-scope="item">
               <img :src="item.value.url" class="img-avatar" alt="">
               <span class="avatar-status" v-bind:class="{ 'bg-success': item.value.status == 'success',  'bg-warning': item.value.status == 'warning', 'bg-danger': item.value.status == 'danger', 'bg-secondary': item.value.status == '' }"></span>
@@ -515,7 +511,8 @@
                 </span> | Registered: {{item.value.registered}}
               </div>
             </div>
-            <img slot="country" slot-scope="item" :src="item.value.flag" :alt="item.value.name" style="height:24px;">
+            <i slot="country" class="h4 mb-0" :class="flag(item.value.flag)" slot-scope="item" :title="item.value.flag" :id="item.value.flag"></i>
+            <i class="flag-icon flag-icon-pw h1" title="pw" id="pw"></i>
             <div slot="usage" slot-scope="item">
               <div class="clearfix">
                 <div class="float-left">
@@ -563,51 +560,52 @@ export default {
   },
   data: function () {
     return {
+      selected: 'Month',
       tableItems: [
         {
-          avatar: { url: '/static/img/avatars/1.jpg', status: 'success' },
+          avatar: { url: 'static/img/avatars/1.jpg', status: 'success' },
           user: { name: 'Yiorgos Avraamu', new: true, registered: 'Jan 1, 2015' },
-          country: { name: 'USA', flag: '/static/img/flags/USA.png' },
+          country: { name: 'USA', flag: 'us' },
           usage: { value: 50, period: 'Jun 11, 2015 - Jul 10, 2015' },
           payment: { name: 'Mastercard', icon: 'fa fa-cc-mastercard' },
           activity: '10 sec ago'
         },
         {
-          avatar: { url: '/static/img/avatars/2.jpg', status: 'danger' },
+          avatar: { url: 'static/img/avatars/2.jpg', status: 'danger' },
           user: { name: 'Avram Tarasios', new: false, registered: 'Jan 1, 2015' },
-          country: { name: 'Brazil', flag: '/static/img/flags/Brazil.png' },
+          country: { name: 'Brazil', flag: 'br' },
           usage: { value: 22, period: 'Jun 11, 2015 - Jul 10, 2015' },
           payment: { name: 'Visa', icon: 'fa fa-cc-visa' },
           activity: '5 minutes ago'
         },
         {
-          avatar: { url: '/static/img/avatars/3.jpg', status: 'warning' },
+          avatar: { url: 'static/img/avatars/3.jpg', status: 'warning' },
           user: { name: 'Quintin Ed', new: true, registered: 'Jan 1, 2015' },
-          country: { name: 'India', flag: '/static/img/flags/India.png' },
+          country: { name: 'India', flag: 'in' },
           usage: { value: 74, period: 'Jun 11, 2015 - Jul 10, 2015' },
           payment: { name: 'Stripe', icon: 'fa fa-cc-stripe' },
           activity: '1 hour ago'
         },
         {
-          avatar: { url: '/static/img/avatars/4.jpg', status: '' },
+          avatar: { url: 'static/img/avatars/4.jpg', status: '' },
           user: { name: 'Enéas Kwadwo', new: true, registered: 'Jan 1, 2015' },
-          country: { name: 'France', flag: '/static/img/flags/France.png' },
+          country: { name: 'France', flag: 'fr' },
           usage: { value: 98, period: 'Jun 11, 2015 - Jul 10, 2015' },
           payment: { name: 'PayPal', icon: 'fa fa-paypal' },
           activity: 'Last month'
         },
         {
-          avatar: { url: '/static/img/avatars/5.jpg', status: 'success' },
+          avatar: { url: 'static/img/avatars/5.jpg', status: 'success' },
           user: { name: 'Agapetus Tadeáš', new: true, registered: 'Jan 1, 2015' },
-          country: { name: 'Spain', flag: '/static/img/flags/Spain.png' },
+          country: { name: 'Spain', flag: 'es' },
           usage: { value: 22, period: 'Jun 11, 2015 - Jul 10, 2015' },
           payment: { name: 'Google Wallet', icon: 'fa fa-google-wallet' },
           activity: 'Last week'
         },
         {
-          avatar: { url: '/static/img/avatars/6.jpg', status: 'danger' },
+          avatar: { url: 'static/img/avatars/6.jpg', status: 'danger' },
           user: { name: 'Friderik Dávid', new: true, registered: 'Jan 1, 2015' },
-          country: { name: 'Poland', flag: '/static/img/flags/Poland.png' },
+          country: { name: 'Poland', flag: 'pl' },
           usage: { value: 43, period: 'Jun 11, 2015 - Jul 10, 2015' },
           payment: { name: 'Amex', icon: 'fa fa-cc-amex' },
           activity: 'Last week'
@@ -651,6 +649,9 @@ export default {
         $variant = 'danger'
       }
       return $variant
+    },
+    flag (value) {
+      return 'flag-icon flag-icon-' + value
     }
   }
 }

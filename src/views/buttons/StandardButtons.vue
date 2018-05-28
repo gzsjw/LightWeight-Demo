@@ -225,7 +225,7 @@
 
 <script>
 export default {
-  name: 'buttons',
+  name: 'standard-buttons',
   data: () => {
     return { myToggle: false }
   }

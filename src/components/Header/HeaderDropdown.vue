@@ -1,8 +1,8 @@
 <template>
       <b-nav-item-dropdown class="px-2">
         <template slot="button-content">
-          <img :src="user.avatar" class="img-avatar d-md-down-none">
-          <span>用户：{{user.name}}</span>
+          <img :src="userAvatar" class="img-avatar d-md-down-none">
+          <span>用户：{{userName}}</span>
         </template>
         <b-dropdown-header tag="div" class="text-center"><strong>Account</strong></b-dropdown-header>
         <b-dropdown-item><i class="fa fa-bell-o"></i> Updates<b-badge variant="info">{{itemsCount}}</b-badge></b-dropdown-item>
@@ -29,10 +29,26 @@ export default {
   computed: {
     ...mapState([
       'user'
-    ])
+    ]),
+    userAvatar () {
+      if (utils.isNullOrUndefined(this.user) || utils.isNullOrUndefined(this.user.avatar)) {
+        return '/static/img/user.svg'
+      } else {
+        return this.user.avatar
+      }
+    },
+    userName () {
+      if (utils.isNullOrUndefined(this.user) || utils.isNullOrUndefined(this.user.userName)) {
+        return '匿名'
+      } else {
+        return this.user.userName
+      }
+    }
   },
   data: () => {
-    return { itemsCount: 42 }
+    return {
+      itemsCount: 42
+    }
   },
   methods: {
     logout () {

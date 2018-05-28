@@ -64,7 +64,7 @@ export default new Router({
       name: 'Full',
       component: Full,
       meta: {
-        label: '首页',
+        label: '首页'
       },
       children: [
         {

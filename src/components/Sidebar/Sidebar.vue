@@ -13,31 +13,33 @@
             <SidebarNavDivider :key="index" :classes="item.class"/>
           </template>
           <template v-else-if="item.label">
-            <SidebarNavLabel :key="index" :name="item.name" :url="item.url" :icon="item.icon" :label="item.label" :classes="item.class"/>
+            <SidebarNavLabel v-if="!needAuthority(item) || hasAuthority(item)" :key="index" :name="item.name" :url="item.url" :icon="item.icon" :label="item.label" :classes="item.class"/>
           </template>
           <template v-else>
             <template v-if="item.children">
               <!-- First level dropdown -->
-              <SidebarNavDropdown :key="index" :name="item.name" :url="item.url" :icon="item.icon">
+              <SidebarNavDropdown :key="index" :name="item.name" :icon="item.icon">
                 <template v-for="(childL1, index1) in item.children">
                   <template v-if="childL1.children">
                     <!-- Second level dropdown -->
-                    <SidebarNavDropdown :key="index1" :name="childL1.name" :url="childL1.url" :icon="childL1.icon">
-                      <li class="nav-item" :key="index2" v-for="(childL2, index2) in childL1.children">
-                        <SidebarNavLink :name="childL2.name" :url="childL2.url" :icon="childL2.icon" :badge="childL2.badge" :variant="item.variant"/>
-                      </li>
+                    <SidebarNavDropdown :key="index1" :name="childL1.name" :icon="childL1.icon">
+                      <template v-for="(childL2, index2) in childL1.children">
+                        <li class="nav-item" v-if="!needAuthority(childL2) || hasAuthority(childL2)" :key="index2">
+                          <SidebarNavLink :name="childL2.name" :url="childL2.url" :icon="childL2.icon" :badge="childL2.badge" :variant="childL2.variant"/>
+                        </li>
+                      </template>
                     </SidebarNavDropdown>
                   </template>
                   <template v-else>
-                    <SidebarNavItem :key="index1" :classes="item.class">
-                      <SidebarNavLink :name="childL1.name" :url="childL1.url" :icon="childL1.icon" :badge="childL1.badge" :variant="item.variant"/>
+                    <SidebarNavItem v-if="!needAuthority(childL1) || hasAuthority(childL1)" :key="index1" :classes="item.class">
+                      <SidebarNavLink :name="childL1.name" :url="childL1.url" :icon="childL1.icon" :badge="childL1.badge" :variant="childL1.variant"/>
                     </SidebarNavItem>
                   </template>
                 </template>
               </SidebarNavDropdown>
             </template>
             <template v-else>
-              <SidebarNavItem :key="index" :classes="item.class">
+              <SidebarNavItem v-if="!needAuthority(item) || hasAuthority(item)" :key="index" :classes="item.class">
                 <SidebarNavLink :name="item.name" :url="item.url" :icon="item.icon" :badge="item.badge" :variant="item.variant"/>
               </SidebarNavItem>
             </template>
@@ -61,6 +63,8 @@ import SidebarNavLink from './SidebarNavLink'
 import SidebarNavTitle from './SidebarNavTitle'
 import SidebarNavItem from './SidebarNavItem'
 import SidebarNavLabel from './SidebarNavLabel'
+import utils from '@/utils'
+
 export default {
   name: 'sidebar',
   props: {
@@ -83,9 +87,18 @@ export default {
     SidebarNavLabel
   },
   methods: {
-    handleClick (e) {
-      e.preventDefault()
-      e.target.parentElement.classList.toggle('open')
+    // handleClick (e) {
+    //   e.preventDefault()
+    //   e.target.parentElement.classList.toggle('open')
+    // },
+    needAuthority (item) {
+      if (item.funcnode) {
+        return true
+      }
+      return false
+    },
+    hasAuthority (item) {
+      return utils.hasFuncNodeAuthority(this.$store, item.funcnode)
     }
   }
 }

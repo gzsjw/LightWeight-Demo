@@ -12,11 +12,27 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       // proxy servlet starting with /servlet to nc
-      '/servlet': {
-        target: 'http://192.168.243.82:8182',
+      '/system': {
+        target: 'http://127.0.0.1:8089',
         changeOrigin: true,
         pathRewrite: {
-          '^/servlet': '/servlet'
+          '^/system': '/system'
+        }
+      },
+      //
+      '/attachment': {
+        target: 'http://127.0.0.1:8089',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/attachment': '/attachment'
+        }
+      },
+      //
+      '/useravatar': {
+        target: 'http://127.0.0.1:8089',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/useravatar': '/static/useravatar'
         }
       }
     },
