@@ -26,6 +26,7 @@ import Cards from '@/views/base/Cards'
 import Forms from '@/views/base/Forms'
 import Switches from '@/views/base/Switches'
 import Tables from '@/views/base/Tables'
+import AntVueTable from '@/views/AntVueTable'
 
 // Views - Icons
 import FontAwesome from '@/views/icons/FontAwesome'
@@ -178,6 +179,14 @@ export default new Router({
               component: Tables,
               meta: {
                 label: '表格'
+              }
+            },
+            {
+              path: 'antvuetable',
+              name: 'AntVueTable',
+              component: AntVueTable,
+              meta: {
+                label: 'AntVue树表'
               }
             }
           ]

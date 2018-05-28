@@ -44,6 +44,11 @@ export default {
           name: 'Tables',
           url: '/components/tables',
           icon: 'icon-puzzle'
+        },
+        {
+          name: 'AntVueTable',
+          url: '/components/antvuetable',
+          icon: 'icon-puzzle'
         }
       ]
     },

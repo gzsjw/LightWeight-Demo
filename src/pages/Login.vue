@@ -1,44 +1,44 @@
 <template>
   <div class="app flex-row align-items-center">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card-group">
-            <div class="card p-4">
-              <div class="card-body">
+      <b-row class="justify-content-center">
+        <b-col md="8">
+          <b-card-group>
+            <b-card no-body class="p-4">
+              <b-card-body>
                 <form @submit.prevent="checkCreds()">
                   <h1>登录</h1>
                   <p class="text-muted">输入账号密码</p>
-                  <div class="input-group mb-3">
-                    <span class="input-group-addon"><i class="icon-user"></i></span>
+                  <b-input-group class="mb-3">
+                    <b-input-group-prepend><b-input-group-text><i class="icon-user"></i></b-input-group-text></b-input-group-prepend>
                     <input class="form-control" id="userCode" placeholder="用户" type="text" v-model="userCode" autofocus />
-                  </div>
-                  <div class="input-group mb-4">
-                    <span class="input-group-addon"><i class="icon-lock"></i></span>
+                  </b-input-group>
+                  <b-input-group class="mb-4">
+                    <b-input-group-prepend><b-input-group-text><i class="icon-lock"></i></b-input-group-text></b-input-group-prepend>
                     <input class="form-control" id="userPWD" placeholder="密码" type="password" v-model="userPWD" />
-                  </div>
-                  <div class="row">
-                    <div class="col-4">
-                      <button type="submit" class="btn btn-primary px-4">登录</button>
-                    </div>
-                    <div class="col-8">
+                  </b-input-group>
+                  <b-row>
+                    <b-col cols="4">
+                      <b-button type="submit" variant="primary" class="px-4">登录</b-button>
+                    </b-col>
+                    <b-col cols="8">
                       <span class="text-left text-danger">{{loginMessage}}</span>
-                    </div>
-                  </div>
+                    </b-col>
+                  </b-row>
                 </form>
-              </div>
-            </div>
-            <div class="card text-white bg-primary py-5 d-md-down-none">
-              <div class="card-body d-flex flex-column justify-content-center">
-                <div>
-                  <h1 class="text-center p-2">翰智软件</h1>
-                  <h1 class="text-center p-2">演示系统</h1>
+              </b-card-body>
+            </b-card>
+            <b-card no-body bg-variant="primary" class="py-4 d-md-down-none">
+              <b-card-body class="d-flex align-items-center justify-content-center">
+                <div class="text-center">
+                  <h1 class="text-white p-2">翰智软件</h1>
+                  <h1 class="text-white p-2">演示系统</h1>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </b-card-body>
+            </b-card>
+          </b-card-group>
+        </b-col>
+      </b-row>
     </div>
   </div>
 </template>
