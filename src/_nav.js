@@ -49,6 +49,11 @@ export default {
           name: 'AntVueTable',
           url: '/components/antvuetable',
           icon: 'icon-puzzle'
+        },
+        {
+          name: 'GanttView',
+          url: '/components/ganttview',
+          icon: 'icon-puzzle'
         }
       ]
     },

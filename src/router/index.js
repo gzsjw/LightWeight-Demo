@@ -32,6 +32,9 @@ import AntVueTable from '@/views/AntVueTable'
 import FontAwesome from '@/views/icons/FontAwesome'
 import SimpleLineIcons from '@/views/icons/SimpleLineIcons'
 
+// dhtmlx-gantt
+import GanttView from '@/views/GanttView'
+
 Vue.use(Router)
 
 export default new Router({
@@ -187,6 +190,14 @@ export default new Router({
               component: AntVueTable,
               meta: {
                 label: 'AntVue树表'
+              }
+            },
+            {
+              path: 'ganttview',
+              name: 'GanttView',
+              component: GanttView,
+              meta: {
+                label: '甘特图'
               }
             }
           ]

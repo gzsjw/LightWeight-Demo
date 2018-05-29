@@ -30,6 +30,8 @@ export default {
   /* Import Flag Icons Set */
   @import 'flag-icon-css/css/flag-icon.min.css';
 
+  @import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
+
   .el-input .el-input__inner[type=number] {
     text-align: right;
   }
