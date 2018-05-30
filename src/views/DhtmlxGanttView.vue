@@ -1,15 +1,15 @@
 <template>
-  <div class="app-container">
-    <gantt class="left-container" :tasks="tasks" @task-updated="logTaskUpdate" @link-updated="logLinkUpdate" @task-selected="selectTask"></gantt>
+  <div class="top-container">
+    <dhtmlx-gantt class="left-container" :tasks="tasks" @task-updated="logTaskUpdate" @link-updated="logLinkUpdate" @task-selected="selectTask"></dhtmlx-gantt>
   </div>
 </template>
 
 <script>
-import Gantt from './Gantt.vue'
+import DhtmlxGantt from './gantt/DhtmlxGantt.vue'
 
 export default {
-  name: 'gantt-view',
-  components: {Gantt},
+  name: 'dhtmlx-gantt-view',
+  components: {DhtmlxGantt},
   data () {
     return {
       tasks: {
@@ -54,8 +54,8 @@ export default {
 }
 </script>
 
-<style>
-.app-container {
+<style scoped>
+.top-container {
   height: 600px;
   width: 100%;
 }

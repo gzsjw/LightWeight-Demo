@@ -51,8 +51,8 @@ export default {
           icon: 'icon-puzzle'
         },
         {
-          name: 'GanttView',
-          url: '/components/ganttview',
+          name: 'DhtmlxGanttView',
+          url: '/components/dhtmlxganttview',
           icon: 'icon-puzzle'
         }
       ]

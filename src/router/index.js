@@ -33,7 +33,7 @@ import FontAwesome from '@/views/icons/FontAwesome'
 import SimpleLineIcons from '@/views/icons/SimpleLineIcons'
 
 // dhtmlx-gantt
-import GanttView from '@/views/GanttView'
+import DhtmlxGanttView from '@/views/DhtmlxGanttView'
 
 Vue.use(Router)
 
@@ -193,9 +193,9 @@ export default new Router({
               }
             },
             {
-              path: 'ganttview',
-              name: 'GanttView',
-              component: GanttView,
+              path: 'dhtmlxganttview',
+              name: 'DhtmlxGanttView',
+              component: DhtmlxGanttView,
               meta: {
                 label: '甘特图'
               }

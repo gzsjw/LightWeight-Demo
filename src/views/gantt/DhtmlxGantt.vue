@@ -1,13 +1,14 @@
 <template>
-  <div ref="gantt"></div>
+  <div ref="dhtmlxgantt"></div>
 </template>
 
 <script>
 /* eslint-disable */
 import 'dhtmlx-gantt'
+import "dhtmlx-gantt/codebase/locale/locale_cn.js"
 
 export default {
-  name: 'gantt',
+  name: 'dhtmlxgantt',
   props: {
     tasks: {
       type: Object,
@@ -64,8 +65,8 @@ export default {
   mounted () {
     this.$_initGanttEvents()
 
-    gantt.init(this.$refs.gantt)
-    gantt.parse(this.$props.tasks)
+    gantt.init(this.$refs.dhtmlxgantt)
+    gantt.parse(this.tasks)
   }
 }
 </script>
