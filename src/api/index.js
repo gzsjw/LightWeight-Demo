@@ -24,19 +24,16 @@ export default {
   queryGithub (succeed, fail) {
     axios.get(config.ApiUrlList.JS_SORTBYSTARS_GITHUB)
       .then(response => {
-        console.log('GitHub Response:', response)
-
+        // console.log('GitHub Response:', response)
         if (response.status === 200) {
           succeed(response.data.items)
         } else {
-          console.log('error', response.statusText)
-          fail(response.statusText)
+          fail({message: response.statusText})
         }
       })
       .catch(error => {
         // Request failed.
-        console.log('error', error.response)
-        fail(error.response.statusText)
+        fail(error)
       })
   }
 }

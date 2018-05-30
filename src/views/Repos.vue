@@ -57,8 +57,9 @@ export default {
     querySucceed (items) {
       this.repoitems = items
     },
-    queryFail (errortext) {
-      this.error = errortext
+    queryFail (error) {
+      this.error = error.message
+      console.log(error)
     }
   },
   mounted () {

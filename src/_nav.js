@@ -51,8 +51,8 @@ export default {
           icon: 'icon-puzzle'
         },
         {
-          name: 'DhtmlxGanttView',
-          url: '/components/dhtmlxganttview',
+          name: 'FrappeGanttView',
+          url: '/components/frappeganttview',
           icon: 'icon-puzzle'
         }
       ]

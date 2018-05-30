@@ -32,8 +32,8 @@ import AntVueTable from '@/views/AntVueTable'
 import FontAwesome from '@/views/icons/FontAwesome'
 import SimpleLineIcons from '@/views/icons/SimpleLineIcons'
 
-// dhtmlx-gantt
-import DhtmlxGanttView from '@/views/DhtmlxGanttView'
+// Gantt
+import FrappeGanttView from '@/views/FrappeGanttView'
 
 Vue.use(Router)
 
@@ -193,9 +193,9 @@ export default new Router({
               }
             },
             {
-              path: 'dhtmlxganttview',
-              name: 'DhtmlxGanttView',
-              component: DhtmlxGanttView,
+              path: 'frappeganttview',
+              name: 'FrappeGanttView',
+              component: FrappeGanttView,
               meta: {
                 label: '甘特图'
               }

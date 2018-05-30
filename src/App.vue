@@ -25,18 +25,22 @@ export default {
   @import 'bootstrap-vue/dist/bootstrap-vue.css';
 
   @import 'vue-antd-ui/dist/antd.css';
+
   @import 'element-ui/lib/theme-chalk/index.css';
 
   /* Import Flag Icons Set */
   @import 'flag-icon-css/css/flag-icon.min.css';
 
-  @import "dhtmlx-gantt/codebase/dhtmlxgantt.css";
-
+  /* ElementUi custom css */
   .el-input .el-input__inner[type=number] {
     text-align: right;
   }
-
   .money_number .el-input__inner[type=text] {
     text-align: right;
+  }
+
+  /* FrappeGantt custom css */
+  .gantt .bar-milestone .bar {
+    fill: tomato;
   }
 </style>
